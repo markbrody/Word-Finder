@@ -13,9 +13,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     let maxResults = 10
+    var wordfinder = WordFinder()
     var wordlist = [String]()
     var resultlist = [String]()
     var pasteBoard = UIPasteboard.generalPasteboard()
+
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,10 @@ class ViewController: UIViewController {
         let dict = NSDictionary(contentsOfFile:path)
         
         wordlist = dict!["wordlist"] as! Array<String>
+        
+        for word in wordlist {
+            wordfinder.train(word)
+        }
         
         self.tableView.reloadData()
 
@@ -93,7 +100,12 @@ class ViewController: UIViewController {
         }
         
         if self.resultlist.count == 0 {
-            print("no results boss")
+            let search = self.searchDisplayController!.searchBar.text!.lowercaseString
+            let results = wordfinder.correct(search)
+            
+            for result in results! {
+                resultlist += [result]
+            }
         }
     }
     
@@ -106,14 +118,20 @@ class ViewController: UIViewController {
         return true
     }
     
+/*
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print(self.resultlist)
-        self.resultlist = []
-        resultlist += ["one"]
-        resultlist += ["two"]
-        resultlist += ["three"]
-        print(resultlist)
+        if self.resultlist.count == 0 {
+            let search = self.searchDisplayController!.searchBar.text!.lowercaseString
+            let results = wordfinder.correct(search)
+            
+            for result in results! {
+                resultlist += [result]
+            }
+            print(resultlist)
+            self.tableView.reloadData()
+        }
     }
+*/
     
     // MARK: pasteboard
     
