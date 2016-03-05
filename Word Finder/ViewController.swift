@@ -97,6 +97,10 @@ class ViewController: UIViewController {
         }
     }
     
+    func searchDisplayController(controller: UISearchDisplayController, didLoadSearchResultsTableView tableView: UITableView) {
+        tableView.rowHeight = 96
+    }
+    
     func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool {
         self.filterContent(searchString!)
         return true
