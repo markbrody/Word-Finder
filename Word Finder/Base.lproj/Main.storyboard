@@ -52,13 +52,31 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="1zT-W4-UcO"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Guk-KV-jVh">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kfF-zV-F79"/>
+                                    <barButtonItem style="plain" id="uaC-ND-FN9">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Ato-Va-yEC">
+                                            <rect key="frame" x="558" y="11" width="22" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <segue destination="tDY-mx-P8j" kind="show" id="AFJ-OL-gxv"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2OL-Ky-lS3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CvK-I9-gsl"/>
                             <constraint firstItem="2OL-Ky-lS3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JTp-zR-hU3"/>
+                            <constraint firstAttribute="trailing" secondItem="Guk-KV-jVh" secondAttribute="trailing" id="KFW-xb-1mO"/>
                             <constraint firstAttribute="trailing" secondItem="2OL-Ky-lS3" secondAttribute="trailing" id="NGc-sF-kJD"/>
                             <constraint firstItem="2OL-Ky-lS3" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="P0J-qo-Sql"/>
+                            <constraint firstItem="Guk-KV-jVh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="anr-6l-xvp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Guk-KV-jVh" secondAttribute="bottom" id="cvV-rY-BK5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Word Finder" id="Iiq-9m-YsS">
@@ -81,6 +99,27 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1114" y="389"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="POq-5v-Koe">
+            <objects>
+                <viewController id="tDY-mx-P8j" customClass="InfoViewController" customModule="Word_Finder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vzx-8A-hfY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yhe-HE-jH0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iNX-na-7yh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="2L9-iY-rTU">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="84a-nW-9pb"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5QP-xP-ZMI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1774" y="389"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pic-hT-4AO">

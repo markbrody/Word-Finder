@@ -15,6 +15,7 @@
 		4D0BC0691C8B4355003717E5 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D0BC0681C8B4355003717E5 /* words.plist */; };
 		4D0BC06B1C8B4B05003717E5 /* WordFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0BC06A1C8B4B05003717E5 /* WordFinder.swift */; };
 		4D0BC06D1C8B4B45003717E5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0BC06C1C8B4B45003717E5 /* Extensions.swift */; };
+		4D0BC06F1C8B56A4003717E5 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0BC06E1C8B56A4003717E5 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4D0BC0681C8B4355003717E5 /* words.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = words.plist; sourceTree = "<group>"; };
 		4D0BC06A1C8B4B05003717E5 /* WordFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordFinder.swift; sourceTree = "<group>"; };
 		4D0BC06C1C8B4B45003717E5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4D0BC06E1C8B56A4003717E5 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				4D0BC05A1C8B4342003717E5 /* Main.storyboard */,
 				4D0BC05D1C8B4342003717E5 /* Assets.xcassets */,
 				4D0BC05F1C8B4342003717E5 /* LaunchScreen.storyboard */,
+				4D0BC06E1C8B56A4003717E5 /* InfoViewController.swift */,
 				4D0BC0621C8B4342003717E5 /* Info.plist */,
 				4D0BC0681C8B4355003717E5 /* words.plist */,
 				4D0BC06A1C8B4B05003717E5 /* WordFinder.swift */,
@@ -149,6 +152,7 @@
 				4D0BC0571C8B4342003717E5 /* AppDelegate.swift in Sources */,
 				4D0BC06B1C8B4B05003717E5 /* WordFinder.swift in Sources */,
 				4D0BC06D1C8B4B45003717E5 /* Extensions.swift in Sources */,
+				4D0BC06F1C8B56A4003717E5 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
