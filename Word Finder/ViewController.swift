@@ -10,14 +10,90 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var wordlist = [String]()
+    var resultlist = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let path = NSBundle.mainBundle().pathForResource("words", ofType: "plist")!
+        let dict = NSDictionary(contentsOfFile:path)
+        
+        wordlist = dict!["wordlist"] as! Array<String>
+        
+        self.tableView.reloadData()
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: table
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == self.searchDisplayController?.searchResultsTableView {
+            return self.resultlist.count
+        }
+        else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+        var word: String
+        if tableView == self.searchDisplayController?.searchResultsTableView {
+            word = self.resultlist[indexPath.row] as! String
+        }
+        else {
+            word = self.wordlist[indexPath.row] as! String
+        }
+        
+        cell.textLabel!.text = word
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        var word: String
+        if tableView == self.searchDisplayController?.searchResultsTableView {
+            word = self.resultlist[indexPath.row] as! String
+        }
+        else {
+            word = self.wordlist[indexPath.row] as! String
+        }
+        
+    }
+    
+    // MARK: search
+    
+    func filterContent(search: String) {
+        self.resultlist = self.wordlist.filter() {
+            $0.hasPrefix(search.lowercaseString)
+        }
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool {
+        self.filterContent(searchString!)
+        return true
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print(self.resultlist)
+        self.resultlist = []
+        resultlist += ["one"]
+        resultlist += ["two"]
+        resultlist += ["three"]
+        print(resultlist)
     }
 
 
