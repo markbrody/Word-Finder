@@ -91,6 +91,10 @@ class ViewController: UIViewController {
         self.resultlist = self.wordlist.filter() {
             $0.hasPrefix(search.lowercaseString)
         }
+        
+        if self.resultlist.count == 0 {
+            print("no results boss")
+        }
     }
     
     func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool {
