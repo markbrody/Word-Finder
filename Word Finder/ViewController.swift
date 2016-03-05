@@ -11,10 +11,12 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
+
+    let maxResults = 10
     var wordlist = [String]()
     var resultlist = [String]()
-    
+    var pasteBoard = UIPasteboard.generalPasteboard()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +42,12 @@ class ViewController: UIViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.searchDisplayController?.searchResultsTableView {
-            return self.resultlist.count
+            if self.resultlist.count >= maxResults {
+                return maxResults
+            }
+            else {
+                return self.resultlist.count
+            }
         }
         else {
             return 0
@@ -49,7 +56,9 @@ class ViewController: UIViewController {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+        let backgroundView = UIView()
         var word: String
+        
         if tableView == self.searchDisplayController?.searchResultsTableView {
             word = self.resultlist[indexPath.row] as! String
         }
@@ -57,6 +66,8 @@ class ViewController: UIViewController {
             word = self.wordlist[indexPath.row] as! String
         }
         
+        backgroundView.backgroundColor = UIColor(red: 1, green: 205/255, blue: 0, alpha: 1)
+        cell.selectedBackgroundView = backgroundView
         cell.textLabel!.text = word
         
         return cell
@@ -95,7 +106,24 @@ class ViewController: UIViewController {
         resultlist += ["three"]
         print(resultlist)
     }
-
+    
+    // MARK: pasteboard
+    
+    func tableView(tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
+        if (action == Selector("copy:")) {
+            return true
+        }
+        return false
+    }
+    
+    func tableView(tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        pasteBoard.string = cell!.textLabel?.text
+    }
 
 }
 
